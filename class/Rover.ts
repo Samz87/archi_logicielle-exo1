@@ -18,23 +18,17 @@ export class Rover {
 
     moveSouth(): void {
         if (this.y === 0 ) this.y = this.mars.size ;
-        else if (this.y > 0) {
-            this.y -= 1;
-        }
+        else if (this.y > 0) this.y -= 1;
     }
 
     moveEast(): void {
         if (this.x === this.mars.size ) this.x = 0;
-        else if (this.x < this.mars.size - 1) {
-            this.x += 1;
-        }
+        else if (this.x < this.mars.size - 1) this.x += 1;
     }
 
     moveWest(): void {
-        if (this.x === 0 ) this.x = this.mars.size ;
-        else if (this.x > 0) {
-            this.x -= 1;
-        }
+        if (this.x === 0 ) this.x = this.mars.size;
+        else if (this.x > 0) this.x -= 1;
     }
 
     reportLocation(): string {
