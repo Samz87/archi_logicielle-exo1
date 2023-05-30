@@ -24,44 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const readlineSync = __importStar(require("readline-sync"));
-class Mars {
-    constructor(size) {
-        this.size = size;
-        this.grid = Array.from({ length: size }, () => new Array(size).fill(0));
-    }
-}
-class Rover {
-    constructor(x, y, mars) {
-        this.x = x;
-        this.y = y;
-        this.mars = mars;
-    }
-    moveNorth() {
-        if (this.y < this.mars.size - 1) {
-            this.y += 1;
-        }
-    }
-    moveSouth() {
-        if (this.y > 0) {
-            this.y -= 1;
-        }
-    }
-    moveEast() {
-        if (this.x < this.mars.size - 1) {
-            this.x += 1;
-        }
-    }
-    moveWest() {
-        if (this.x > 0) {
-            this.x -= 1;
-        }
-    }
-    reportLocation() {
-        return `Rover's current location is (${this.x}, ${this.y})`;
-    }
-}
-const mars = new Mars(10);
-const rover = new Rover(0, 0, mars);
+const Mars_1 = require("./class/Mars");
+const Rover_1 = require("./class/Rover");
+const mars = new Mars_1.Mars(10);
+const rover = new Rover_1.Rover(0, 0, mars);
+// waiting for console input
 while (true) {
     console.log(rover.reportLocation());
     const command = readlineSync.question('Enter command (north, south, east, west, quit): ');
@@ -80,8 +47,10 @@ while (true) {
             break;
         case 'quit':
             process.exit(0);
+            break;
         default:
             console.log('Invalid command');
+            break;
     }
 }
 //# sourceMappingURL=main.js.map
