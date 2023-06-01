@@ -28,29 +28,12 @@ const Mars_1 = require("./class/Mars");
 const Rover_1 = require("./class/Rover");
 const mars = new Mars_1.Mars(10);
 const rover = new Rover_1.Rover(0, 0, mars);
-// waiting for console input
 while (true) {
     console.log(rover.reportLocation());
     const command = readlineSync.question('Enter command (north, south, east, west, quit): ');
-    switch (command) {
-        case 'north':
-            rover.moveNorth();
-            break;
-        case 'south':
-            rover.moveSouth();
-            break;
-        case 'east':
-            rover.moveEast();
-            break;
-        case 'west':
-            rover.moveWest();
-            break;
-        case 'quit':
-            process.exit(0);
-            break;
-        default:
-            console.log('Invalid command');
-            break;
+    if (command === 'quit') {
+        process.exit(0);
     }
+    rover.executeCommand(command);
 }
 //# sourceMappingURL=main.js.map

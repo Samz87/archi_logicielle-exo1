@@ -12,32 +12,66 @@ export class Rover {
     }
 
     moveNorth(): void {
-        if (this.y === this.mars.size ) this.y = 0;
-        else if (this.y < this.mars.size - 1) this.y += 1;
+        const newY = this.y === (this.mars.size - 1) ? 0 : this.y + 1;
+        if (!this.mars.hasObstacle(this.x, newY)) {
+            this.y = newY;
+        } else {
+            console.log("Obstacle detected. Stopping movement.");
+        }
     }
 
+
+
+
     moveSouth(): void {
-        if (this.y === 0 ) this.y = this.mars.size ;
-        else if (this.y > 0) {
-            this.y -= 1;
+        const newY = this.y === 0 ? this.mars.size - 1 : this.y - 1;
+        if (!this.mars.hasObstacle(this.x, newY)) {
+            this.y = newY;
+        } else {
+            console.log('Obstacle detected. Stopping movement.');
         }
     }
 
     moveEast(): void {
-        if (this.x === this.mars.size ) this.x = 0;
-        else if (this.x < this.mars.size - 1) {
-            this.x += 1;
+        const newX = this.x === this.mars.size - 1 ? 0 : this.x + 1;
+        if (!this.mars.hasObstacle(newX, this.y)) {
+            this.x = newX;
+        } else {
+            console.log("Obstacle detected. Stopping movement.");
         }
     }
 
     moveWest(): void {
-        if (this.x === 0 ) this.x = this.mars.size ;
-        else if (this.x > 0) {
-            this.x -= 1;
+        const newX = this.x === 0 ? this.mars.size - 1 : this.x - 1;
+        if (!this.mars.hasObstacle(newX, this.y)) {
+            this.x = newX;
+        } else {
+            console.log("Obstacle detected. Stopping movement.");
         }
     }
+
 
     reportLocation(): string {
         return `Rover's current location is (${this.x}, ${this.y})`;
     }
+    executeCommand(command: string): void {
+        switch (command) {
+            case 'north':
+                this.moveNorth();
+                break;
+            case 'south':
+                this.moveSouth();
+                break;
+            case 'east':
+                this.moveEast();
+                break;
+            case 'west':
+                this.moveWest();
+                break;
+            default:
+                console.log(`Invalid command: ${command}. Skipping.`);
+                break;
+        }
+    }
 }
+
