@@ -23,18 +23,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// main.ts
 const readlineSync = __importStar(require("readline-sync"));
 const Mars_1 = require("./class/Mars");
 const Rover_1 = require("./class/Rover");
+const CommandExecutor_1 = require("./class/CommandExecutor");
 const mars = new Mars_1.Mars(10);
 const rover = new Rover_1.Rover(0, 0, mars);
+const commandExecutor = new CommandExecutor_1.CommandExecutor(rover);
 while (true) {
     console.log(rover.reportLocation());
     mars.display(rover);
-    const command = readlineSync.question('Enter command (north, south, east, west, quit): ');
-    if (command === 'quit') {
+    const command = readlineSync.question("Enter command (north, south, east, west, quit): ");
+    if (command === "quit") {
         process.exit(0);
     }
-    rover.executeCommand(command);
+    commandExecutor.executeCommand(command);
 }
 //# sourceMappingURL=main.js.map
