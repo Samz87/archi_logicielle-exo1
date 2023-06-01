@@ -1,4 +1,3 @@
-// main.ts
 import * as readlineSync from "readline-sync";
 import { Mars } from "./class/Mars";
 import { Rover } from "./class/Rover";

@@ -23,7 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// main.ts
 const readlineSync = __importStar(require("readline-sync"));
 const Mars_1 = require("./class/Mars");
 const Rover_1 = require("./class/Rover");
