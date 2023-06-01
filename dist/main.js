@@ -30,6 +30,7 @@ const mars = new Mars_1.Mars(10);
 const rover = new Rover_1.Rover(0, 0, mars);
 while (true) {
     console.log(rover.reportLocation());
+    mars.display(rover);
     const command = readlineSync.question('Enter command (north, south, east, west, quit): ');
     if (command === 'quit') {
         process.exit(0);

@@ -1,3 +1,5 @@
+import {Rover} from "./Rover";
+
 export class Mars {
     size: number;
     grid: { hasObstacle: boolean }[][];
@@ -13,5 +15,30 @@ export class Mars {
 
     hasObstacle(x: number, y: number): boolean {
         return this.grid[y][x].hasObstacle;
+    }
+
+    display(rover: Rover): void {
+        let horizontalBorder = '+';
+        for (let i = 0; i < this.size; i++) {
+            horizontalBorder += '--';
+        }
+        horizontalBorder += '+';
+
+        console.log(horizontalBorder);
+        for (let y = 0; y < this.size; y++) {
+            let row = '| ';
+            for (let x = 0; x < this.size; x++) {
+                if (rover.x === x && rover.y === y) {
+                    row += 'R ';
+                } else if (this.grid[y][x].hasObstacle) {
+                    row += 'O ';
+                } else {
+                    row += '. ';
+                }
+            }
+            row += '|';
+            console.log(row);
+        }
+        console.log(horizontalBorder);
     }
 }

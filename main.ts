@@ -7,6 +7,7 @@ const rover = new Rover(0, 0, mars);
 
 while (true) {
     console.log(rover.reportLocation());
+    mars.display(rover);
     const command = readlineSync.question('Enter command (north, south, east, west, quit): ');
 
     if (command === 'quit') {
