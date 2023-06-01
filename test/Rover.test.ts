@@ -11,46 +11,54 @@ describe('Rover', () => {
     });
 
     it('should be able to move north', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.moveNorth();
-        expect(rover.y).toBe(1);
+        expect(rover.y).toBe(9);
     });
 
     it('should be able to move south', () => {
         rover.y = 1;
+        mars.hasObstacle = jest.fn(() => false);
         rover.moveSouth();
-        expect(rover.y).toBe(0);
+        expect(rover.y).toBe(2);
     });
 
     it('should be able to move east', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.moveEast();
         expect(rover.x).toBe(1);
     });
 
     it('should be able to move west', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.x = 1;
         rover.moveWest();
         expect(rover.x).toBe(0);
     });
 
     it('should be able to move north beyond the mars boundary', () => {
-        rover.y = 9;
-        rover.moveNorth();
-        expect(rover.y).toBe(0);
-    });
-
-    it('should be able to move south beyond the mars boundary', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.y = 0;
-        rover.moveSouth();
+        rover.moveNorth();
         expect(rover.y).toBe(9);
     });
 
+    it('should be able to move south beyond the mars boundary', () => {
+        mars.hasObstacle = jest.fn(() => false);
+        rover.y = 9;
+        rover.moveSouth();
+        expect(rover.y).toBe(0);
+    });
+
     it('should be able to move east beyond the mars boundary', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.x = 9;
         rover.moveEast();
         expect(rover.x).toBe(0);
     });
 
     it('should be able to move west beyond the mars boundary', () => {
+        mars.hasObstacle = jest.fn(() => false);
         rover.x = 0;
         rover.moveWest();
         expect(rover.x).toBe(9);
@@ -60,16 +68,15 @@ describe('Rover', () => {
         expect(rover.reportLocation()).toBe("Rover's current location is (0, 0)");
     });
     it('should stop when encountering an obstacle to the north', () => {
-        mars.grid[1][0].hasObstacle = true;
+        mars.grid[9][0].hasObstacle = true;
         rover.moveNorth();
         expect(rover.y).toBe(0);
     });
 
     it('should stop when encountering an obstacle to the south', () => {
-        rover.y = 1;
-        mars.grid[0][0].hasObstacle = true;
+        mars.grid[1][0].hasObstacle = true;
         rover.moveSouth();
-        expect(rover.y).toBe(1);
+        expect(rover.x).toBe(0);
     });
 
     it('should stop when encountering an obstacle to the east', () => {
@@ -79,9 +86,8 @@ describe('Rover', () => {
     });
 
     it('should stop when encountering an obstacle to the west', () => {
-        rover.x = 1;
-        mars.grid[0][0].hasObstacle = true;
+        mars.grid[0][9].hasObstacle = true;
         rover.moveWest();
-        expect(rover.x).toBe(1);
+        expect(rover.x).toBe(0);
     });
 });

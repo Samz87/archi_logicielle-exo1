@@ -12,7 +12,7 @@ export class Rover {
     }
 
     moveNorth(): void {
-        const newY = this.y === (this.mars.size - 1) ? 0 : this.y + 1;
+        const newY = this.y === 0 ? this.mars.size - 1 : this.y - 1;
         if (!this.mars.hasObstacle(this.x, newY)) {
             this.y = newY;
         } else {
@@ -24,7 +24,7 @@ export class Rover {
 
 
     moveSouth(): void {
-        const newY = this.y === 0 ? this.mars.size - 1 : this.y - 1;
+        const newY = this.y === (this.mars.size - 1) ? 0 : this.y + 1;
         if (!this.mars.hasObstacle(this.x, newY)) {
             this.y = newY;
         } else {
