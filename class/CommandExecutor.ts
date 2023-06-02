@@ -9,20 +9,20 @@ export class CommandExecutor {
 
   executeCommand(command: string): void {
     switch (command) {
-      case "north":
+      case "nord":
         this.rover.moveNorth();
         break;
-      case "south":
+      case "sud":
         this.rover.moveSouth();
         break;
-      case "east":
+      case "est":
         this.rover.moveEast();
         break;
-      case "west":
+      case "ouest":
         this.rover.moveWest();
         break;
       default:
-        console.log(`Invalid command: ${command}. Skipping.`);
+        console.log(`Commande invalide: ${command}. On ne fait rien.`);
         break;
     }
   }

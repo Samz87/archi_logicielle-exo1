@@ -19,7 +19,7 @@ export class Rover {
     if (!this.obstacleDetector.hasObstacle(this.x, newY)) {
       this.y = newY;
     } else {
-      console.log("Obstacle detected. Stopping movement.");
+      console.log("Obstacle détecté, on s'arrête.");
     }
   }
 
@@ -28,7 +28,7 @@ export class Rover {
     if (!this.obstacleDetector.hasObstacle(this.x, newY)) {
       this.y = newY;
     } else {
-      console.log("Obstacle detected. Stopping movement.");
+      console.log("Obstacle détecté, on s'arrête.");
     }
   }
 
@@ -37,7 +37,7 @@ export class Rover {
     if (!this.obstacleDetector.hasObstacle(newX, this.y)) {
       this.x = newX;
     } else {
-      console.log("Obstacle detected. Stopping movement.");
+      console.log("Obstacle détecté, on s'arrête.");
     }
   }
 
@@ -46,12 +46,15 @@ export class Rover {
     if (!this.obstacleDetector.hasObstacle(newX, this.y)) {
       this.x = newX;
     } else {
-      console.log("Obstacle detected. Stopping movement.");
+      console.log("Obstacle détecté, on s'arrête.");
     }
   }
 
   reportLocation(): string {
-    return `Rover's current location is (${this.x}, ${this.y})`;
+    return `La position actuelle du Rover est : (${this.x}, ${this.y})`;
   }
 }
+
+
+
 

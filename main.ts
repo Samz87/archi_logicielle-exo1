@@ -11,10 +11,10 @@ while (true) {
   console.log(rover.reportLocation());
   mars.display(rover);
   const command = readlineSync.question(
-    "Enter command (north, south, east, west, quit): "
+    "Entrer une commande (nord, sud, est, ouest, quitter): "
   );
 
-  if (command === "quit") {
+  if (command === "quitter") {
     process.exit(0);
   }
 

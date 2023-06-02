@@ -33,8 +33,8 @@ const commandExecutor = new CommandExecutor_1.CommandExecutor(rover);
 while (true) {
     console.log(rover.reportLocation());
     mars.display(rover);
-    const command = readlineSync.question("Enter command (north, south, east, west, quit): ");
-    if (command === "quit") {
+    const command = readlineSync.question("Entrer une commande (nord, sud, est, ouest, quitter): ");
+    if (command === "quitter") {
         process.exit(0);
     }
     commandExecutor.executeCommand(command);
